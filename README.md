@@ -1,4 +1,4 @@
-# A 'State-scalable' project factory pattern with Terragrunt
+# A 'state-scalable' project factory pattern with Terragrunt
 
 ## Overview
 Resolve the problem of state volume explotion with project factory. Terragrunt helps with that by:
