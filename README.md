@@ -11,7 +11,7 @@ This pattern scales the 'factory' oriented approach of IaC implementation, facil
 ## TODO
 1. Write explanation of how it works
 1. Update example with different service accounts for team directories
-1. Create branches for variations. Variations can be like, integrating with FAST Fabring project eg.
+1. Create branches for variations. Variations can be like, integrating with FAST Fabric project factory pattern eg.
 
 ## Expalanation
 
