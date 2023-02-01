@@ -8,6 +8,11 @@ Resolves the problem of state volume explotion with project factory. Terragrunt 
 
 This pattern scales the 'factory' oriented approach of IaC implementation, facilitating both scalability of the Terraform state file size and also develper productivity by minimizing time to run *plans*. By providing mechanisms to create resource group definitions using both local and common data configurations through `defaults`, and implementing `DRY` code in a central `source`, it encourages a mature `Infrastructure as Data` implementation practice. 
 
+## TODO
+1. Write explanation of how it works
+1. Update example with different service accounts for team directories
+1. Create branches for variations. Variations can be like, integrating with FAST Fabring project eg.
+
 ## Expalanation
 
 ![Diagram](/docs/images/image1.png)
