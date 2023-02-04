@@ -26,7 +26,7 @@ This pattern scales the 'factory' oriented approach of IaC implementation, facil
 
 ## How to run
 1. [Install Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
-1. Create folders for categories similar to `team1`, `team2` given as sample.
+1. Create [folders](https://cloud.google.com/resource-manager/docs/creating-managing-folders#creating-folders) in your organization; similar to `team1`, `team2` as shown in sample.
 1. Create project files in data \<category\>  projects similar to `*.yaml.sample` files provided to project specific configurations.
 1. Create defaults.yaml file for each category similar to `defaults.yaml.sample` file provided for common configurations.
 1. Create root.yaml file similar to `root.yaml.sample` for remote backend configurations.
