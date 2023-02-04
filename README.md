@@ -3,7 +3,7 @@
 ## Overview
 Resolves the problem of state volume explotion with project factory. Terragrunt helps with that by:
 1. Providing a dynamic way to configure [remote_state](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/#keep-your-remote-state-configuration-dry) for categories of resources in directories.
-1. Providing DRY configuration of source code by generating code in target directories using dynamic [source](https://terragrunt.gruntwork.io/docs/features/keep-your-terraform-code-dry/#motivation) definitions.
+1. Providing [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) configuration of source code by generating code in target directories using dynamic [source](https://terragrunt.gruntwork.io/docs/features/keep-your-terraform-code-dry/#motivation) definitions.
 1. Drastically reduce time to perform `terraform plan` or `terraform apply` by supporting [parallel](https://terragrunt.gruntwork.io/docs/features/execute-terraform-commands-on-multiple-modules-at-once/) execution of resource plans.
 
 This pattern scales the 'factory' oriented approach of IaC implementation, facilitating both scalability of the Terraform state file size and also develper productivity by minimizing time to run *plans*. By providing mechanisms to create resource group definitions using both local and common data configurations through `defaults`, and implementing `DRY` code in a central `source`, it encourages a mature `Infrastructure as Data` implementation practice. 
