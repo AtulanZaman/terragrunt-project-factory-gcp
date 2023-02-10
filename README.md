@@ -10,7 +10,7 @@ This pattern scales the 'factory' oriented approach of IaC implementation, facil
 
 ## Expalanation
 
-![Diagram](/docs/images/image1.png)
+![Diagram](/docs/images/image2.png)
 
 ## Requirements
 1. Folders where projects will be created already exists.
