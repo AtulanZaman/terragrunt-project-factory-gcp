@@ -73,6 +73,8 @@ include "root" {
 An additional configuration defined in the `terragrunt.hcl` file for team1 is the `terraform` block. This specifies that the source code for the data configuration describing the resources for this directory will be implemented by following `terraform` -> `source` code. Terragrunt manages a temporary instance of the source code inside a directory `.terragrunt-cache`, absolving the developer from maintaining several instances of the code base in different data subdirectories.
 
 ```terraform
+# Root -> data -> team1 -> terragrunt.hcl
+
 terraform {
   # Pull the terraform configuration from the local file system. Terragrunt will make a copy of the source folder in the
   # Terragrunt working directory (typically `.terragrunt-cache`).
