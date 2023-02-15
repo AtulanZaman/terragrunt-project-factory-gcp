@@ -38,7 +38,7 @@ resource "random_id" "server" {
 
 
 resource "google_project" "seed_project" {
-  name                = "terragrunt-seedproject-1"
+  name                = "terragrunt-seedproject"
   project_id          = "terragrunt-seedproject-${random_id.server.hex}"
   folder_id           = google_folder.terragrunt.name
   billing_account     = var.billing_account
