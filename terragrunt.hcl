@@ -27,7 +27,7 @@ inputs = local.vars
 remote_state {
   backend = "gcs"
   config = {
-    bucket   = local.vars.bucket_prefix
+    bucket   = local.vars.gcs_bucket
     prefix   = path_relative_to_include()
     project  = local.vars.root_project
     location = local.vars.region

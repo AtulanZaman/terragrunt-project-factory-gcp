@@ -18,26 +18,15 @@
 
 
 /*******************************************
-  Create Terragrunt Folder under org
+  Create terragrunt Folder under org
  *******************************************/
 
-resource "google_folder" "Terragrunt" {
-  display_name = "Terragrunt_Test"
-  parent       = var.parent
+resource "google_folder" "terragrunt" {
+  display_name = "terragrunt_test"
+  parent       = var.org_id
 }
 
-/**********************************************
-  Create Team folders under Terragrunt Folder 
- *********************************************/
-resource "google_folder" "team1" {
-  display_name = "team1"
-  parent       = google_folder.Terragrunt.id
-}
 
-resource "google_folder" "team2" {
-  display_name = "team2"
-  parent       = google_folder.Terragrunt.id
-}
 
 /*******************************************
   Project creation
@@ -51,7 +40,7 @@ resource "random_id" "server" {
 resource "google_project" "seed_project" {
   name                = "terragrunt-seedproject-1"
   project_id          = "terragrunt-seedproject-${random_id.server.hex}"
-  folder_id           = google_folder.Terragrunt.name
+  folder_id           = google_folder.terragrunt.name
   billing_account     = var.billing_account
   auto_create_network = "false"
 }
@@ -68,11 +57,47 @@ resource "google_storage_bucket" "tf_state_bkt" {
 
 }
 
-resource "local_file" "packer-vars" {
+resource "local_file" "root-vars" {
   content = templatefile("root.yaml.tpl", {
     ROOT_PROJECT = google_project.seed_project.project_id
     GCS_BUCKET   = google_storage_bucket.tf_state_bkt.name
     REGION       = var.default_region
   })
   filename = "../root.yaml"
+}
+
+
+/*************************************************
+  Create Team1 Folder and populate defaults.yaml 
+ ************************************************/
+resource "google_folder" "team1" {
+  display_name = "team1"
+  parent       = google_folder.terragrunt.id
+}
+
+
+resource "local_file" "team1-vars" {
+  content = templatefile("defaults.yaml.tpl", {
+    FOLDER_ID = google_folder.team1.id
+    ORG_ID   = trim( var.org_id, "organizations/")
+    BILLING_ACCOUNT       = var.billing_account
+  })
+  filename = "../data/team1/defaults.yaml"
+}
+
+/*************************************************
+  Create Team1 Folder and populate defaults.yaml 
+ ************************************************/
+resource "google_folder" "team2" {
+  display_name = "team2"
+  parent       = google_folder.terragrunt.id
+}
+
+resource "local_file" "team2-vars" {
+  content = templatefile("defaults.yaml.tpl", {
+    FOLDER_ID = google_folder.team2.id
+    ORG_ID   = trim( var.org_id, "organizations/")
+    BILLING_ACCOUNT       = var.billing_account
+  })
+  filename = "../data/team2/defaults.yaml"
 }
