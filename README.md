@@ -79,7 +79,10 @@ In this example, the `terraform` configuration of a local source code module in 
 
 ## Requirements
 
-### Automation setup
+A few resoures need to be created before running terragrunt. Either use the terraform scripts under setup folder or follow manual steps given below.
+In either case make sure individual running the steps have folder creator, project creator and storage admin roles.
+
+### Setup by terraform scritps
 
 1. cd setup
 2. Update terraform.tfvars with the correct org_id, billing_account, default region and bucket name where state will be stored.
@@ -99,12 +102,10 @@ terraform apply
 
 ### Manual setup
 
-1. Folders where projects will be created already exists.
-1. Project where remote state files will be stored already exists.
+- Create two Folders where Terragrunt will create projects. Add corresponding folders id's in data/team/defaults.yaml and data/team2/defaults.yaml
+- Create a Project to store terraform state and a gcs bucket in that project.
+- Add project_id and gcs_bucket name in root.yaml.
 
-1. Service Accounts required for executing deployment already exists.
-1. The account running the deployment has the required permissions for the google public [project-factory](https://github.com/terraform-google-modules/terraform-google-project-factory) module.
-1. The account has permissions to create buckets and objects in the GCP project storing the state files
 
 ## How to run
 
