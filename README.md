@@ -82,17 +82,17 @@ In this example, the `terraform` configuration of a local source code module in 
 A few resoures need to be created before running terragrunt. Either use the terraform scripts under setup folder or follow manual steps given below.
 In either case make sure individual running the steps have folder creator, project creator and storage admin roles.
 
-### Setup by terraform scritps
+### Setup by terraform scripts
 
 1. cd setup
-2. Update terraform.tfvars with the correct org_id, billing_account, default region and bucket name where state will be stored.
-3. This creates resources that are needed to run terragrunt tests.
+2. Create a terraform.tfvars from the sample with the correct org_id, billing_account, default region and bucket name where state will be stored.
+3. This creates resources that are needed to run the sample terragrunt project factory.
 
 - "terragrunt_test" folder under org
 - "terragrunt-seedproject" project under "terragrunt_test" folder
 - "terragrunt-iac-core-bkt" GCS Bucket for storing state
 - "Team1" and "Team2" folders
-- Generate root.yaml and defaults.yaml files from template files.
+- Generate root.yaml and defaults.yaml files inside the teams' directoriees from template files.
 
 ```
 terraform init
@@ -108,9 +108,10 @@ terraform apply
 
 
 ## How to run
+*Steps 2 to 5 can be skipped if you ran the setup scripts*
 
 1. [Install Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
-1. Create [folders](https://cloud.google.com/resource-manager/docs/creating-managing-folders#creating-folders) in your organization; similar to `team1`, `team2` as shown in sample.
+1. Create [folders](https://cloud.google.com/resource-manager/docs/creating-managing-folders#creating-folders) in your organization; similar to `team1`, `team2` as shown in sample. 
 1. Create project files in data \<category\>  projects similar to `*.yaml.sample` files provided to project specific configurations.
 1. Create defaults.yaml file for each category similar to `defaults.yaml.sample` file provided for common configurations.
 1. Create root.yaml file similar to `root.yaml.sample` for remote backend configurations.
@@ -120,6 +121,8 @@ terragrunt run-all init
 terragrunt run-all plan
 terragrunt run-all apply
 ```
+
+**Note: `terragrunt plan` or `apply` can be run directly in subdirectories (ie. data/team1 etc) with a `terragrunt.hcl` file, to create resources for each team. This is useful for separating pipelines. `terragrunt run-all` is useful for runnning all deployments at once and in parallel.** 
 
 ## Variations
 

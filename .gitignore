@@ -3,3 +3,6 @@
 
 # Ignore Terraform cache files
 .terraform.lock.hcl
+
+# Ignore *.tfvars files
+*.tfvars
