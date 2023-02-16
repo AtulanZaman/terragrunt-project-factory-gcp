@@ -78,9 +78,9 @@ resource "google_folder" "team1" {
 
 resource "local_file" "team1-vars" {
   content = templatefile("defaults.yaml.tpl", {
-    FOLDER_ID = google_folder.team1.id
-    ORG_ID   = trim( var.org_id, "organizations/")
-    BILLING_ACCOUNT       = var.billing_account
+    FOLDER_ID       = google_folder.team1.id
+    ORG_ID          = trim(var.org_id, "organizations/")
+    BILLING_ACCOUNT = var.billing_account
   })
   filename = "../data/team1/defaults.yaml"
 }
@@ -95,9 +95,9 @@ resource "google_folder" "team2" {
 
 resource "local_file" "team2-vars" {
   content = templatefile("defaults.yaml.tpl", {
-    FOLDER_ID = google_folder.team2.id
-    ORG_ID   = trim( var.org_id, "organizations/")
-    BILLING_ACCOUNT       = var.billing_account
+    FOLDER_ID       = google_folder.team2.id
+    ORG_ID          = trim(var.org_id, "organizations/")
+    BILLING_ACCOUNT = var.billing_account
   })
   filename = "../data/team2/defaults.yaml"
 }
